@@ -36,16 +36,12 @@ O jogador está preso em labirintos de diferentes épocas e precisa coletar cris
 
 ## Controles
 
-Informe as teclas ou comandos utilizados no jogo.
-
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
+## Controles
+- **Seta para cima:** mover para cima
+- **Seta para baixo:** mover para baixo
+- **Seta para esquerda:** mover para esquerda
+- **Seta para direita:** mover para direita
+- **ESC:** sair do jogo
 
 ## Como executar o projeto
 

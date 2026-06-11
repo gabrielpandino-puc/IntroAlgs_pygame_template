@@ -1,15 +1,13 @@
 # Nome do Jogo
 
-Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
-
-Este repositório é um template para os grupos da disciplina. A proposta é começar com uma base funcional e evoluir o jogo ao longo do semestre.
+Labirinto do tempo 
 
 ## Integrantes do grupo
 
-- Nome do integrante 1
-- Nome do integrante 2
-- Nome do integrante 3
-- Nome do integrante 4
+- Enzo Carneiro Dias
+- Gabriel Tavares Pandino
+- Andre Luiz Pinheiro Lopes
+- Daniel Carneiro
 
 ## Estrutura do projeto
 
@@ -21,31 +19,20 @@ Este repositório é um template para os grupos da disciplina. A proposta é com
 - `docs/`: documentação do projeto, incluindo proposta inicial.
 
 ## Descrição do jogo
-
-Descreva brevemente a ideia principal do jogo.
-
-Exemplo:
-
-> O jogo consiste em controlar um personagem que deve coletar moedas e evitar obstáculos. O jogador ganha pontos ao coletar itens e perde vidas ao colidir com obstáculos. A partida termina quando o tempo acaba ou quando o jogador perde todas as vidas.
+O jogador está preso em labirintos de diferentes épocas e precisa coletar cristais do tempo para liberar o portal de saída. Cada fase apresenta desafios simples de exploração, incentivando o raciocínio lógico e a tomada de decisões. Conforme avança, o jogador visita cenários inspirados em diferentes períodos históricos, encontrando novos caminhos e obstáculos. Com mecânicas acessíveis e progressão gradual, o jogo foi desenvolvido para proporcionar uma experiência divertida e adequada para iniciantes em programação.
 
 ## Objetivo do jogador
 
-Explique o que o jogador precisa fazer para vencer ou avançar no jogo.
-
-Exemplo:
-
-> O objetivo é coletar a maior quantidade possível de itens antes que o tempo acabe, evitando colisões com os obstáculos.
+O jogador está preso em labirintos de diferentes épocas e precisa coletar cristais do tempo para liberar o portal de saída.
 
 ## Regras do jogo
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador se movimenta usando as setas do teclado.
-- Cada item coletado aumenta a pontuação.
-- Colidir com um obstáculo reduz a quantidade de vidas.
-- A partida termina quando o jogador perde todas as vidas ou quando o tempo acaba.
+* O jogador se move pelo labirinto usando as setas.
+* Deve coletar todos os cristais da fase.
+* Depois de coletar os cristais, o portal é liberado.
+* Se encostar em inimigos, perde vida.
+* Se o tempo acabar, perde.
+* Se chegar ao portal, passa de fase.
 
 ## Controles
 

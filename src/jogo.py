@@ -85,7 +85,7 @@ def executar_jogo():
         vidas_antes = vidas
         vidas = interagir_inimigo(jogador, inimigo, vidas, LARGURA_TELA, ALTURA_TELA)
         if vidas < vidas_antes:
-            audio.tocar_dano
+            audio.tocar_dano()
 
         if jogador_perdeu(vidas):
             rodando = False

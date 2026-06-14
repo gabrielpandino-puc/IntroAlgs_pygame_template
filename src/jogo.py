@@ -9,6 +9,10 @@ from src.config import (
     TITULO_JOGO,
     AZUL,
     CINZA,
+    PRETO,
+    BRANCO,
+    VERMELHO,
+    AMARELO,
     CAMINHO_RECORDE,
     CAMINHO_SPRITES,
 )
@@ -21,7 +25,8 @@ from src.funcoes import (
     tomar_dano,
     processar_movimento, 
     coletar_cristal,     
-    interagir_inimigo    
+    interagir_inimigo,
+    desenhar_texto
 )
 
 from src.sprites import pegar_sprite
@@ -63,6 +68,8 @@ def executar_jogo():
     vidas = 3
     recorde = carregar_recorde(CAMINHO_RECORDE)
 
+    estado = "MENU" 
+
     while rodando:
         relogio.tick(FPS)
 
@@ -72,37 +79,70 @@ def executar_jogo():
             elif evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_ESCAPE:
                     rodando = False
+                
+                if estado == "MENU":
+                    if evento.key == pygame.K_SPACE:
+                        estado = "JOGANDO"
+                
+                elif estado == "GAMEOVER" or estado == "VITORIA":
+                    if evento.key == pygame.K_r:
+                        estado = "JOGANDO"
+                        pontos = 0
+                        vidas = 3
+                        jogador["rect"].topleft = (100, 100)
+                        cristal["rect"].topleft = (500, 300)
+                        inimigo["rect"].topleft = (200, 500)
 
-        teclas = pygame.key.get_pressed()
+        if estado == "MENU":
+            tela.fill(PRETO)
+            desenhar_texto(tela, "LABIRINTO DO TEMPO", 60, BRANCO, LARGURA_TELA // 2, ALTURA_TELA // 2 - 50)
+            desenhar_texto(tela, "Pressione ESPAÇO para Iniciar", 30, AMARELO, LARGURA_TELA // 2, ALTURA_TELA // 2 + 50)
 
-        processar_movimento(teclas, jogador, velocidade, LARGURA_TELA, ALTURA_TELA)
+        elif estado == "JOGANDO":
+            teclas = pygame.key.get_pressed()
 
-        pontos_antes = pontos
-        pontos = coletar_cristal(jogador, cristal, pontos, LARGURA_TELA, ALTURA_TELA)
-        if pontos > pontos_antes:
-            audio.tocar_cristal()
+            processar_movimento(teclas, jogador, velocidade, LARGURA_TELA, ALTURA_TELA)
 
-        vidas_antes = vidas
-        vidas = interagir_inimigo(jogador, inimigo, vidas, LARGURA_TELA, ALTURA_TELA)
-        if vidas < vidas_antes:
-            audio.tocar_dano()
+            pontos_antes = pontos
+            pontos = coletar_cristal(jogador, cristal, pontos, LARGURA_TELA, ALTURA_TELA)
+            if pontos > pontos_antes:
+                audio.tocar_cristal()
 
-        if jogador_perdeu(vidas):
-            rodando = False
+            vidas_antes = vidas
+            vidas = interagir_inimigo(jogador, inimigo, vidas, LARGURA_TELA, ALTURA_TELA)
+            if vidas < vidas_antes:
+                audio.tocar_dano()
 
-        if pontos > recorde:
-            recorde = pontos
-            salvar_recorde(CAMINHO_RECORDE, recorde)
+            if jogador_perdeu(vidas):
+                estado = "GAMEOVER"
 
-        pygame.display.set_caption(
-            f"{TITULO_JOGO} | Pontos: {pontos} | Recorde: {recorde} | Vidas: {vidas}"
-        )
+            if pontos > recorde:
+                recorde = pontos
+                salvar_recorde(CAMINHO_RECORDE, recorde)
 
-        tela.fill(CINZA)
-        tela.blit(cristal["imagem"], cristal["rect"]) # Atualizado para cristal
-        tela.blit(inimigo["imagem"], inimigo["rect"])
-        tela.blit(jogador["imagem"], jogador["rect"])
-        
+            pygame.display.set_caption(
+                f"{TITULO_JOGO} | Pontos: {pontos} | Recorde: {recorde} | Vidas: {vidas}"
+            )
+
+            tela.fill(CINZA)
+            tela.blit(cristal["imagem"], cristal["rect"])
+            tela.blit(inimigo["imagem"], inimigo["rect"])
+            tela.blit(jogador["imagem"], jogador["rect"])
+            
+            desenhar_texto(tela, f"Pontos: {pontos}  |  Vidas: {vidas}", 24, PRETO, 120, 20)
+
+        elif estado == "GAMEOVER":
+            tela.fill(PRETO)
+            desenhar_texto(tela, "FIM DE JOGO", 70, VERMELHO, LARGURA_TELA // 2, ALTURA_TELA // 2 - 60)
+            desenhar_texto(tela, f"Sua pontuação: {pontos}", 40, BRANCO, LARGURA_TELA // 2, ALTURA_TELA // 2)
+            desenhar_texto(tela, "Pressione 'R' para recomeçar ou 'ESC' para sair", 25, AMARELO, LARGURA_TELA // 2, ALTURA_TELA // 2 + 80)
+
+        elif estado == "VITORIA":
+            tela.fill(PRETO)
+            desenhar_texto(tela, "VOCÊ ESCAPOU!", 70, AMARELO, LARGURA_TELA // 2, ALTURA_TELA // 2 - 60)
+            desenhar_texto(tela, f"Pontuação Final: {pontos}", 40, BRANCO, LARGURA_TELA // 2, ALTURA_TELA // 2)
+            desenhar_texto(tela, "Pressione 'R' para jogar novamente", 25, BRANCO, LARGURA_TELA // 2, ALTURA_TELA // 2 + 80)
+
         pygame.display.flip()
 
     pygame.quit()

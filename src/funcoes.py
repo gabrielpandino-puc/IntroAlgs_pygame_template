@@ -62,3 +62,11 @@ def interagir_inimigo(jogador, inimigo, vidas, largura_tela, altura_tela):
             inimigo["rect"].y = 50
             
     return vidas
+
+def desenhar_texto(tela, texto, tamanho, fonte, cor, x, y):
+    fonte = pygame.font.SysFont(None, tamanho)
+    imagem_texto = fonte.render(texto, True, cor)
+    retangulo = imagem_texto.get_rect()
+    retangulo.center = (x, y)
+
+    tela.blit(imagem_texto, retangulo)

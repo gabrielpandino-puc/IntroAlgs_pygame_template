@@ -36,6 +36,9 @@ def executar_jogo():
     pygame.init()
     
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
+    chao = pygame.image.load("assets/imagens/chao.png").convert()
+    chao = pygame.transform.scale(chao, (LARGURA_TELA, ALTURA_TELA))
+
     pygame.display.set_caption(TITULO_JOGO)
 
     relogio = pygame.time.Clock()
@@ -124,7 +127,8 @@ def executar_jogo():
                 f"{TITULO_JOGO} | Pontos: {pontos} | Recorde: {recorde} | Vidas: {vidas}"
             )
 
-            tela.fill(CINZA)
+            tela.blit(chao, (0, 0))
+
             tela.blit(cristal["imagem"], cristal["rect"])
             tela.blit(inimigo["imagem"], inimigo["rect"])
             tela.blit(jogador["imagem"], jogador["rect"])

@@ -8,6 +8,8 @@ BRANCO = (255, 255, 255)
 PRETO = (0, 0, 0)
 CINZA = (212,212,212)
 AZUL = (0, 0, 255)
+AMARELO = (255, 255, 0)
+VERMELHO = (255, 0, 0)
 
 CAMINHO_RECORDE = "data/recorde.txt"
 CAMINHO_SPRITES = "assets/imagens/spritesheet.bmp"

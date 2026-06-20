@@ -1,5 +1,5 @@
 import pygame
-from src.config import MUSICA_FUNDO, SOM_CRISTAL, SOM_DANO, SOM_PORTAL
+from src.config import MUSICA_FUNDO, SOM_CRISTAL, SOM_DANO, SOM_PORTAL,SOM_CLIQUE_MENU
 
 class Audio:
     def __init__(self):
@@ -8,10 +8,12 @@ class Audio:
         self.som_cristal = pygame.mixer.Sound(SOM_CRISTAL)
         self.som_dano = pygame.mixer.Sound(SOM_DANO)
         self.som_portal = pygame.mixer.Sound(SOM_PORTAL)
+        self.som_clique_menu = pygame.mixer.Sound(SOM_CLIQUE_MENU)
 
         self.som_cristal.set_volume(0.6)
         self.som_dano.set_volume(0.7)
         self.som_portal.set_volume(0.8)
+        self.som_clique_menu.set_volume(0.6)
     
     def tocar_musica_fundo(self):
         pygame.mixer.music.load(MUSICA_FUNDO)
@@ -24,3 +26,5 @@ class Audio:
         self.som_dano.play()
     def tocar_portal(self):
         self.som_portal.play()
+    def tocar_clique_menu(self):
+        self.som_clique_menu.play()

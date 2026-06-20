@@ -41,7 +41,24 @@ O jogador está preso em labirintos de diferentes épocas e precisa coletar cris
 - **Seta para baixo:** mover para baixo
 - **Seta para esquerda:** mover para esquerda
 - **Seta para direita:** mover para direita
-- **ESC:** sair do jogo
+- **ESC:** sair do jogo 
+
+## Referências e Assets
+
+### Spritesheet
+- Spritesheet utilizado no jogo: https://opengameart.org/
+
+### Música de fundo
+- Música de fundo utilizada: https://pixabay.com/music/
+
+### Efeitos sonoros
+- Som de clique no menu: https://pixabay.com/sound-effects/
+- Som de coleta de cristal: https://pixabay.com/sound-effects/
+- Som de dano: https://pixabay.com/sound-effects/
+- Som de portal: https://pixabay.com/sound-effects/
+
+### Observação
+Todos os assets utilizados são gratuitos para uso em projetos educacionais e foram obtidos em bibliotecas de recursos livres.
 
 ## Como executar o projeto
 

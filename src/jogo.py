@@ -71,6 +71,7 @@ def executar_jogo():
                 rodando = False
             elif evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_ESCAPE:
+                    audio.tocar_clique_menu()
                     rodando = False
 
         teclas = pygame.key.get_pressed()
